@@ -4,5 +4,7 @@ RUN pip install -r /tmp/requirements.txt
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY rest2.py ./
-EXPOSE 5000
+COPY auth_user.py ./
+COPY retrieve_stocks.py ./
+EXPOSE 8888
 CMD ["python", "rest2.py"]
