@@ -1,0 +1,33 @@
+FROM python:2.7
+
+
+
+EXPOSE 8888
+
+
+
+RUN mkdir -p /usr/src/app
+
+RUN mkdir -p /usr/src/app/config
+
+WORKDIR /usr/src/app
+
+
+
+COPY requirements.txt /usr/src/app/
+
+COPY config/mailconfig.cfg / usr/src/app/config/
+
+COPY config/dbconfig.cfg / usr/src/app/config/
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+
+
+COPY files ./
+
+
+
+ENTRYPOINT ["python2", "files"]
+
+
